@@ -72,25 +72,21 @@ Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" req
 
 <iframe
     src="assets/gamelength-distr-eldermissing.html" width="800" height="600" frameborder="0"
-></iframe>
-The graph above shows the distribution of "gamelength" when "elders" is missing.
+></iframe>The graph above shows the distribution of "gamelength" when "elders" is missing.
 
 <iframe
     src="assets/gamelength-distr-eldernotmissing.html" width="800" height="600" frameborder="0"
-></iframe>
-The graph below shows the distribution of "gamelength" when "elders" is *not* missing.
+></iframe>The graph above shows the distribution of "gamelength" when "elders" is *not* missing.
 
 Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
 
-The p-value was 0.004.
+The p-value was **0.004**.
 
 The histogram below displays the empirical distribution of the KS Statistic, along with the obtained p-value.
 
 <iframe
     src="assets/ks-statistic-distr-mar.html" width="800" height="600" frameborder="0"
-></iframe>
-
-Using a significance level of 1% (.01), I reject the null hypothesis.
+></iframe>Using a significance level of 1% (.01), I reject the null hypothesis.
 
 ---
 
@@ -105,8 +101,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 <iframe
     src="assets/diff-means-mcar.html" width="800" height="600" frameborder="0"
-></iframe>
-Using a significane level of 5% (.05), I fail to reject the null hypothesis.
+></iframe>Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 ---
 ## Hypothesis Testing
@@ -122,6 +117,9 @@ Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 **Significance-Level:** 5% (0.05)
 
 **p-value:** 0.096, using 100,000 simulations
+<iframe
+    src="assets/hypothesis-test-empirical.html" width="800" height="600" frameborder="0"
+></iframe>
 
 **Conclusion:** Fail to Reject the Null Hypothesis.
 - There is a lack of evidence demonstrating that the win-rate of Lee Sin in LCK/LPL is substantially greater than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
