@@ -18,6 +18,15 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 **Description of Columnns**
 - *won*: True if the team won, False otherwise
 - *Lee Sin_played*: True if any player on that team selected Lee Sin, False otherwise
+- *league*: categorical column representing the Tier One league for that team
+- *patch*: categorical columm representing the game version for that match
+- *gamelength*: quantitative column, where each value is the length of that match, in seconds
+- *side*: categorical column with two possible values: "Blue" or "Red". Represents the side which the team played on the map
+- *team_kdratio*: quantitative column, calculated by divided the number of team kills by the number of team deaths over the match
+- *firstblood*: True if that team got the first kill in the game, False otherwise
+- *golddiffat15*: quantitative column, denoting the differential in gold (resources) at the 15 minute mark. A positive gold differential typically signifies that a team is "winning"
+- *gameid*: nominal variable; the unique gameid for that game
+
 
 
 
