@@ -32,7 +32,7 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 ---
 
 
-## Data Cleaning and Exploratory Data Analysis
+## **Data Cleaning and Exploratory Data Analysis**
 ### Data Cleaning
 I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
 
