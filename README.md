@@ -151,9 +151,9 @@ Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 ## **Hypothesis Testing**
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
-**Null Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is less than or equal to the average win percentage of Lee Sin in all professional tier one leagues.
+**Null Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is equal to the average win percentage of Lee Sin in all professional tier one leagues.
 
-**Alternative Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is greater than the average win percentage of Lee Sin in all professional tier one leagues.
+**Alternative Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is not equal to the average win percentage of Lee Sin in all professional tier one leagues.
 
 **Test Statistic:** Total Variation Distance (TVD)
 - The TVD is an appropriate test statistic when comparing categorical distributions. In this test, I compare the distribution of "won" for the LCK/LPL, along with the overall distribution.
@@ -195,7 +195,7 @@ For my baseline model, I included three features: 'side', 'firstblood', and 'fir
 
 Initially, I used a DecisionTreeClassifier and then changed it to a RandomForestClassifier. I began with a max_depth of 25 as my only hyperparameter.
 
-In terms of accuracy, I would say that my baseline model performed poorly. When testing accuracy, my model sat around 60% across trials. This was somewhat expected since I did not include that many features, and used arbitrary hyperparameters.
+In terms of accuracy, I would say that my baseline model performed poorly. When testing accuracy, my model sat around **60%** across trials. This was somewhat expected since I did not include that many features, and used arbitrary hyperparameters.
 
 
 
@@ -204,7 +204,7 @@ In terms of accuracy, I would say that my baseline model performed poorly. When 
 
 ## **Final Model**
 
-When creating my final model, I first searched for other features which might help predict 'firstbaron' more accurately. In particular, I looked for variables which signified team success in the mid-game (10-20 minutes), since these factors could heavily influence who gets the first baron. After testing different features, I decided to include the following: *
+When creating my final model, I first searched for other features which might help predict 'firstbaron' more accurately. In particular, I looked for variables which signified team success in the mid-game (10-20 minutes), since these factors could heavily influence who gets the first baron. After testing different features, I decided to include the following:
 - ***side*** (nominal)
 - ***firstblood*** (nominal)
 - ***golddiffat15*** (quantitative)
@@ -222,7 +222,7 @@ I fine-tuned the hyperparameters "max_depth", "n_estimators", and "criterion" in
 
 For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionTreeClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionTreeClassifier was performing extremely well when predicting the training data, but not the test data. This sign of overfitting influenced me to switch Classifier models. Ultimately, I believe that using the RandomForestClassifier was an optimal choice since the randomness and unpredictability of League of Legends can greatly sway one team's chances of getting the first baron.
 
-My improved accuracy for the final model was approximately 72.1%. I believe adding more features played a huge role in this, as information such as "golddiffat15" and "xpdiffat15" are significant indicators regarding the performance of a team during a match. Moreover, variables such as "firstmidtower" typically denote if a team gains early control over the map, which might lead to the first baron as the game goes on.
+My improved accuracy for the final model was approximately **72.1%**. I believe adding more features played a huge role in this, as information such as "golddiffat15" and "xpdiffat15" are significant indicators regarding the performance of a team during a match. Most importantly, I believe that my final model improved in terms of generalization compared to my baseline model. Initially, my model was overfit to the training set and performed poorly when generalizing to unseen data. The combination of features and hyperparameters in my final model are a large improvement for this issue, as denoted by the significant increase in accuracy.
 
 
 
@@ -230,12 +230,20 @@ My improved accuracy for the final model was approximately 72.1%. I believe addi
 
 
 ## **Fairness Analysis**
-Group X: LCK Teams
-Group Y: LCS Teams
 
-Null Hypothesis: The model is fair. The precision of the model is the same for LCK and LCS teams.
+**Group 1:** Red-Side Teams
+**Group 2:** Blue-Side Teams
 
-Alternative Hypothesis: The model is not fair. The precision of the model is greater for LCK teams than it is for LCS teams.
+**Null Hypothesis:** The classifier's accuracy is equal for teams playing on the red side and teams playing on the blue side.
 
-Conclusion: ...
+**Alternative Hypothesis:** The classifer's accuracy is higher for teams on the red side than it is for teams playing on the blue side.
+
+**Test Statistic:** Difference in Accuracy (Red - Blue)
+
+**Significance Level:** 5% (0.05)
+
+**p-value:** 0.074
+
+**Conclusion:** Fail to reject the null hypothesis.
+- Using our permutation test, there is a lack of evidence suggesting that the classifier is more accurate for red teams than it is for blue teams.
 
