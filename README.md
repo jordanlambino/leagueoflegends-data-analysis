@@ -67,10 +67,9 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 
 
 ### Interesting Aggregates
-| won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
-|:------|-------------:|---------------:|-------------:|---------------:|-------------:|
-| False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
-| True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
+
+
+|    | won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |\n|---:|:------|-------------:|---------------:|-------------:|---------------:|-------------:|\n|  0 | False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |\n|  1 | True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
 
 
 
