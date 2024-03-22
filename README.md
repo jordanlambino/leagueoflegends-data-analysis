@@ -36,7 +36,16 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 ### Data Cleaning
 I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
 
-**insert dfhead**
+The first 5 rows of my DataFrame are displayed below:
+
+| won   | league   |   patch |   gamelength | side   |   team_kdratio | firstblood   |   golddiffat15 |   xpdiffat15 | gameid                |
+|:------|:---------|--------:|-------------:|:-------|---------------:|:-------------|---------------:|-------------:|:----------------------|
+| True  | LCK      |   13.01 |         2171 | Blue   |        4.25    | True         |           1287 |          538 | ESPORTSTMNT04_2661035 |
+| True  | PCS      |   13.01 |         2139 | Blue   |        2.5     | False        |           1339 |          571 | ESPORTSTMNT03_3098669 |
+| True  | LPL      |   13.01 |         1971 | Blue   |        1.63636 | False        |            nan |          nan | 9718-9718_game_1      |
+| True  | CBLOL    |   13.01 |         1828 | Blue   |        2.2     | True         |           4450 |         1096 | ESPORTSTMNT01_3302316 |
+| True  | LPL      |   13.01 |         1455 | Red    |       12       | True         |            nan |          nan | 9726-9726_game_2      |
+
 
 ### Univariate Analysis
 
