@@ -15,17 +15,17 @@ To measure the dominance of those two regions, my project aims to analyze the wi
 To answer this question, I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility, created a column named "team_kdratio" representing the number of kills divided by the number of deaths, and created a column named "Lee Sin_played". This amounted to a total of 350 rows and 12 columns.
 
 **Description of Columnns**
-- *won*: True if the team won, False otherwise
-- *Lee Sin_played*: True if any player on that team selected Lee Sin, False otherwise
-- *league*: categorical column representing the Tier One league for that team
-- *patch*: categorical columm representing the game version for that match
-- *gamelength*: quantitative column, where each value is the length of that match, in seconds
-- *side*: categorical column with two possible values: "Blue" or "Red". Represents the side which the team played on the map
-- *team_kdratio*: quantitative column, calculated by divided the number of team kills by the number of team deaths over the match
-- *firstblood*: True if that team got the first kill in the game, False otherwise
-- *golddiffat15*: quantitative column, denoting the differential in gold (resources) at the 15 minute mark. A positive gold differential typically signifies that a team is "winning"
-- *xpdiffat15*: quantitative column, signifies if one team has gained more experience points through 15 minutes
-- *gameid*: nominal variable; the unique gameid for that game
+- ***won***: True if the team won, False otherwise
+- ***Lee Sin_played***: True if any player on that team selected Lee Sin, False otherwise
+- ***league***: categorical column representing the Tier One league for that team
+- ***patch***: categorical columm representing the game version for that match
+- ***gamelength***: quantitative column, where each value is the length of that match, in seconds
+- ***side***: categorical column with two possible values: "Blue" or "Red". Represents the side which the team played on the map
+- ***team_kdratio***: quantitative column, calculated by divided the number of team kills by the number of team deaths over the match
+- ***firstblood***: True if that team got the first kill in the game, False otherwise
+- ***golddiffat15***: quantitative column, denoting the differential in gold (resources) at the 15 minute mark. A positive gold differential typically signifies that a team is "winning"
+- ***xpdiffat15***: quantitative column, signifies if one team has gained more experience points through 15 minutes
+- ***gameid***: nominal variable; the unique gameid for that game
 
 
 
@@ -63,6 +63,7 @@ The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK
     src="assets/leesin-num-games-byleague.html" width="800" height="400" frameborder="0"
 ></iframe>
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
+
 
 
 ### Interesting Aggregates
@@ -104,7 +105,10 @@ The histogram below displays the empirical distribution of the KS Statistic, alo
     src="assets/ks-statistic-distr-mar.html" width="800" height="400" frameborder="0"
 ></iframe>Using a significance level of 1% (.01), I reject the null hypothesis.
 
+
+
 ---
+
 Missingness of "elders" **does not depend on** "firstblood". I wanted to explore this connection since teams who get the first kill may obtain the elder dragon more often. Conversely, the value for "elders" might be missing for teams who do not get the first kill, and consequently fall behind in the game.
 
 
@@ -121,7 +125,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 
 ---
-
+ 
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
