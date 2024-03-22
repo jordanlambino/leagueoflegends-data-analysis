@@ -31,6 +31,7 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 
 ---
 
+
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
 I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
@@ -69,11 +70,15 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 ### Interesting Aggregates
 
 
-|    | won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |\n|---:|:------|-------------:|---------------:|-------------:|---------------:|-------------:|\n|  0 | False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |\n|  1 | True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
+| won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
+|:------|-------------:|---------------:|-------------:|---------------:|-------------:|
+| False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
+| True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
 
 
 
 ---
+
 
 ## Assessment of Missingness
 ### NMAR Analysis
@@ -108,6 +113,7 @@ The histogram below displays the empirical distribution of the KS Statistic, alo
 
 ---
 
+
 Missingness of "elders" **does not depend on** "firstblood". I wanted to explore this connection since teams who get the first kill may obtain the elder dragon more often. Conversely, the value for "elders" might be missing for teams who do not get the first kill, and consequently fall behind in the game.
 
 
@@ -125,6 +131,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 ---
  
+
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
@@ -146,6 +153,8 @@ The histogram below displays the empirical distribution of the difference of mea
 - There is a lack of evidence demonstrating that the win-rate of Lee Sin in LCK/LPL is substantially greater than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
 
 ---
+
+
 ## Framing a Prediction Problem
 **Problem Identification:** Predict whether or not a team will obtain the first baron in the match.
 
@@ -161,6 +170,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 ---
 
+
 ## Baseline Model
 For my baseline model, I included three features: 'side', 'firstblood', and 'firstdragon'. I chose 'side' since the spawn-location of the baron is slightly more favorable for the blue team. I chose 'firstblood' and 'firstdragon' since each are important in allowing a team to gain an early lead, and later on get the baron. All of these three variables are nominal.
 
@@ -171,6 +181,7 @@ In terms of accuracy, I would say that my baseline model performed poorly. When 
 
 
 ---
+
 
 ## Final Model
 
@@ -185,6 +196,7 @@ My improved accuracy for the final model was approximately 72.1%. I believe addi
 
 
 ---
+
 
 ## Fairness Analysis
 Group X: LCK Teams
