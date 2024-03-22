@@ -1,26 +1,26 @@
-# leagueoflegends-data-analysis
+# League of Legends Data Analysis:
 Data Analysis Project for DSC 80 at UCSD
 
 ## Introduction
-# Project Description
+### Project Description
 
 ## Data Cleaning and Exploratory Data Analysis
-# Univariate Analysis
+### Univariate Analysis
 
-# Bivariate Analysis
+### Bivariate Analysis
 
-# Interesting Aggregates
+### Interesting Aggregates
 
 ## Assignment of Missingness
-# NMAR Analysis
+### NMAR Analysis
 
-# Missingness Dependency
+### Missingness Dependency
 
 ## Hypothesis Testing
-# Lee Sin Win Rate for LCK/LPL Leagues
+### Lee Sin Win Rate for LCK/LPL Leagues
 
 ## Framing a Prediction Problem
-# Problem Identification
+### Problem Identification
 
 ## Baseline Model
 
