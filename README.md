@@ -36,26 +36,30 @@ I decided to only analyze matches for teams who played Lee Sin, so that every ro
 ### Univariate Analysis
 
 <iframe
-    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="400" frameborder="0"
+    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="500" frameborder="0"
 ></iframe>
 The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in other words, the distribution of the "won" column).
 
+
 <iframe
-    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="400" frameborder="0"
+    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="500" frameborder="0"
 ></iframe>
 The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (in other words, the distribution of the "won" column).
+
 
 ### Bivariate Analysis
 
 <iframe
-    src="assets/leesin-win-percentage-byleague.html" width="800" height="600" frameborder="0"
+    src="assets/leesin-win-percentage-byleague.html" width="800" height="500" frameborder="0"
 ></iframe>
 The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK/LPL regions have high win-rates when playing Lee Sin, along with the VCS (Vietnam) and LCS (North America).
 
+
 <iframe
-    src="assets/leesin-num-games-byleague.html" width="800" height="600" frameborder="0"
+    src="assets/leesin-num-games-byleague.html" width="800" height="500" frameborder="0"
 ></iframe>
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
+
 
 ### Interesting Aggregates
 | won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
@@ -77,11 +81,11 @@ Instead, I decided to go back to the original, raw dataset and assess the missin
 Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with shorter "gamelength".
 
 <iframe
-    src="assets/gamelength-distr-eldermissing.html" width="800" height="600" frameborder="0"
+    src="assets/gamelength-distr-eldermissing.html" width="800" height="500" frameborder="0"
 ></iframe>The graph above shows the distribution of "gamelength" when "elders" is missing.
 
 <iframe
-    src="assets/gamelength-distr-eldernotmissing.html" width="800" height="600" frameborder="0"
+    src="assets/gamelength-distr-eldernotmissing.html" width="800" height="500" frameborder="0"
 ></iframe>The graph above shows the distribution of "gamelength" when "elders" is *not* missing.
 
 Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
@@ -91,7 +95,7 @@ The p-value was **0.004**.
 The histogram below displays the empirical distribution of the KS Statistic, along with the obtained p-value.
 
 <iframe
-    src="assets/ks-statistic-distr-mar.html" width="800" height="600" frameborder="0"
+    src="assets/ks-statistic-distr-mar.html" width="800" height="500" frameborder="0"
 ></iframe>Using a significance level of 1% (.01), I reject the null hypothesis.
 
 ---
@@ -105,7 +109,7 @@ The p-value was 0.44.
 The histogram below displays the empirical distribution of the difference of means, along with the obtained p-value.
 
 <iframe
-    src="assets/diff-means-mcar.html" width="800" height="600" frameborder="0"
+    src="assets/diff-means-mcar.html" width="800" height="500" frameborder="0"
 ></iframe>Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 ---
@@ -123,7 +127,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 **p-value:** 0.096, using 100,000 simulations
 <iframe
-    src="assets/hypothesis-test-empirical.html" width="800" height="600" frameborder="0"
+    src="assets/hypothesis-test-empirical.html" width="800" height="500" frameborder="0"
 ></iframe>
 
 **Conclusion:** Fail to Reject the Null Hypothesis.
