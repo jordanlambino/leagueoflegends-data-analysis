@@ -69,6 +69,7 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 
 ### Interesting Aggregates
 
+- Below, we observe the mean statistics of our DataFrame when grouped by "won". We see that "team_kdratio" is in fact a significant indicator of team success during a match. Interestingly, 'gamelength' tends to be shorter when Lee Sin wins, and longer when Lee Sin loses. Though the difference is not necessarily substantial, it could demonstrate that Lee Sin tends to fall off in strength as the game progresses.
 
 | won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
 |:------|-------------:|---------------:|-------------:|---------------:|-------------:|
@@ -76,7 +77,12 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 | True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
 
 
+- Rather than group matches by result, instead we can look at the mean statistics when grouped by 'firstblood'. We notice that teams who play with Lee Sin often win if they get the first kill. We might also infer that getting the first kill is heavily correlated to team success at the 15 minute mark, as shown in the DataFrame below.
 
+| firstblood   |      won |   gamelength |   team_kdratio |   golddiffat15 |   xpdiffat15 |
+|:-------------|---------:|-------------:|---------------:|---------------:|-------------:|
+| False        | 0.381503 |      1894.52 |        1.19968 |       -875.301 |     -221.801 |
+| True         | 0.615819 |      1852.65 |        2.53727 |       1442.97  |      631.93  |
 ---
 
 
