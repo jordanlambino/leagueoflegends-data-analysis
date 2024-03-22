@@ -75,22 +75,53 @@ The histogram below displays the empirical distribution of the KS Statistic, alo
 Using a significance level of 1% (.01), I reject the null hypothesis.
 
 *break*
+
 Missingness of "elders" **does not depend on** "firstblood". I wanted to explore this connection since teams who get the first kill may obtain the elder dragon more often. Conversely, the value for "elders" might be missing for teams who do not get the first kill, and consequently fall behind in the game.
 
 **insert histogram3**
+
 The graph below shows the distribution of "firstblood" when "elders" is missing.
 
 **insert histogram4**
+
 The graph below shows the distribution of "firstblood" when "elders" is not missing.
 
-Using the difference of means as my test-statistic, the observed value was **
+Using the difference of means as my test-statistic, the observed value was **0.001**.
+
+The p-value was 0.44.
+
+The histogram below displays the empirical distribution of the difference of means, along with the obtained p-value.
+**histogram**
+Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
+**Null Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is less than or equal to the average win percentage of Lee Sin in all professional tier one leagues.
+
+**Alternative Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is greater than the average win percentage of Lee Sin in all professional tier one leagues.
+
+**Test Statistic:** Total Variation Distance (TVD)
+- The TVD is an appropriate test statistic when comparing categorical distributions. In this test, I compare the distribution of "won" for the LCK/LPL, along with the overall distribution.
+
+**Significance-Level:** 5% (0.05)
+
+**p-value:** 0.096, using 100,000 simulations
+
+**Conclusion:** Fail to Reject the Null Hypothesis.
+- There is a lack of evidence demonstrating that the win-rate of Lee Sin in LCK/LPL is substantially greater than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
+
 ## Framing a Prediction Problem
-### Problem Identification
+**Problem Identification:** Predict whether or not a team will obtain the first baron in the match.
+
+**Problem Type:** Binary Classification
+- First baron can be True (1) or False (0).
+
+**Response Variable:** "firstbaron"
+- I chose this variable since it is a clear indication of whether or not the team obtained the first baron. **metric**. 
+
+***Notes:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. 
 
 ## Baseline Model
 
