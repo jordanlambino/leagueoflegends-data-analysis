@@ -1,8 +1,8 @@
-# League of Legends Data Analysis 2024
-author: Jordan Lambino
+# **League of Legends Data Analysis 2024**
+created by: Jordan Lambino
 
 
-## Introduction
+## **Introduction**
 
 My raw dataset contained statistics taken from over 10,000 professional League of Legends matches in the year 2023. Each unique match includes 12 rows, 10 of which represent the individual players, while the other two represent the teams involved.
 
@@ -10,16 +10,15 @@ Professional leagues are divided into tiers by strength/skill, where Tier One le
 
 Since 2011, a World Championship has taken place pitting Tier One teams against one another. This annual tournament has been dominated by the Korean and Chinese leagues (LCK/LPL), who together have won every single World Championship aside from 2011 (Europe-LEC).
 
-To measure the dominance of those two regions, my project aims to analyze the win-rate of a certain champion (character), "Lee Sin," who is notoriously known for being one of the most difficult champions to master due to his versatile, complex abilities. In particular, my project attempts to answer the question: "How does the win-rate of Lee Sin in the LCK/LPL compare to the win-rate of Lee Sin across all Tier One teams?"
+To measure the dominance of those two regions, my project aims to analyze the win-rate of a certain champion (character), "Lee Sin," who is notorious for being one of the most difficult champions to master due to his versatile, complex abilities. In particular, my project attempts to answer the question: "How does the win-rate of Lee Sin in the LCK/LPL compare to the win-rate of Lee Sin across all Tier One teams?"
 
-To answer this question, I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility, created a column named "team_kdratio" representing the number of kills divided by the number of deaths, and created a column named "Lee Sin_played". This amounted to a total of 350 rows and 12 columns.
+To answer this question, I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility and created a column named "team_kdratio" representing the number of kills divided by the number of deaths. Lastly, This amounted to a total of 350 rows and 10 columns.
 
 **Description of Columnns**
 - ***won***: True if the team won, False otherwise
-- ***Lee Sin_played***: True if any player on that team selected Lee Sin, False otherwise
 - ***league***: categorical column representing the Tier One league for that team
 - ***patch***: categorical columm representing the game version for that match
-- ***gamelength***: quantitative column, where each value is the length of that match, in seconds
+- ***gamelength***: quantitative column, where each value is the length of that match, in minutes
 - ***side***: categorical column with two possible values: "Blue" or "Red". Represents the side which the team played on the map
 - ***team_kdratio***: quantitative column, calculated by divided the number of team kills by the number of team deaths over the match
 - ***firstblood***: True if that team got the first kill in the game, False otherwise
@@ -34,7 +33,7 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 
 ## **Data Cleaning and Exploratory Data Analysis**
 ### Data Cleaning
-I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
+I decided to only analyze games for teams who played Lee Sin, so that every row represents a team who played Lee Sin in a given match. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio", as explained above.
 
 The first 5 rows of my DataFrame are displayed below:
 
@@ -101,11 +100,11 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 I believe that the column 'firsttower' is Not Missing at Random (NMAR).
 
 ### Missingness Dependency
-Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential Missing at Random/Missing Completely at Random data. This was due to the fact that much of the data was Missing by Design, since only certain leagues (namely the LPL) did not include values for "golddiffat15" and "xpdiffat15". 
+Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential MAR/MCAR data within the cleaned DataFrame. This was due to the fact that much of the missing data was Missing by Design, since only certain leagues (namely the LPL) did not include values for "golddiffat15" and "xpdiffat15". 
 
-Instead, I decided to go back to the original, raw dataset and assess the missingness of the variable "elders".
+Consequently, I decided to go back to the original, raw dataset and assess the missingness of the variable "elders".
 
-Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with shorter "gamelength".
+Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with a shorter gamelength.
 
 <iframe
     src="assets/gamelength-distr-eldermissing.html" width="800" height="400" frameborder="0"
@@ -201,9 +200,8 @@ In terms of accuracy, I would say that my baseline model performed poorly. When 
 
 ## **Final Model**
 
-For my final model, I added multiple features and fwhich allowed for 
 
-I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my model performance and avoid overfitting. I used GridSearchCV with a grid size of 60 to search for optimal hyperparameters. After searching, I obtained values of 8, 100, and 'gini'.
+I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my model performance and avoid overfitting. I used GridSearchCV with a grid size of 60 to search for optimal hyperparameters. After searching, I obtained values of 8, 100, and 'gini', respectively.
 
 For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionForestClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionForestClassifier was performing well when predicting the training data. I believe that the RandomForestClassifier is an optimal choice as the randomness of League of Legends can greatly sway one team's chances of getting the first baron.
 
