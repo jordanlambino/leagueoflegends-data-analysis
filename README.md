@@ -1,6 +1,3 @@
-### leagueoflegends-data-analysis:
-
-
 # League of Legends Data Analysis 2024
 author: Jordan Lambino
 
@@ -61,6 +58,10 @@ The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
 
 ### Interesting Aggregates
+| won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
+|:------|-------------:|---------------:|-------------:|---------------:|-------------:|
+| False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
+| True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
 
 ---
 
@@ -172,3 +173,4 @@ Null Hypothesis: The model is fair. The precision of the model is the same for L
 Alternative Hypothesis: The model is not fair. The precision of the model is greater for LCK teams than it is for LCS teams.
 
 Conclusion: ...
+
