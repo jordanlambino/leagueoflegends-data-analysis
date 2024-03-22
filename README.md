@@ -35,11 +35,11 @@ I decided to only analyze matches for teams who played Lee Sin, so that every ro
 **insert dfhead**
 
 ### Univariate Analysis
-**insert pie chart 1**
 
 <iframe
-    src="assets/ks-statistic-distr-mar.html" width="800" height="600" frameborder="0"
+    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="600" frameborder="0"
 ></iframe>
+
 
 The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in other words, the distribution of the "won" column).
 
@@ -66,10 +66,14 @@ Instead, I decided to go back to the original, raw dataset and assess the missin
 
 Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with shorter "gamelength".
 
-**insert histogram1**
+<iframe
+    src="assets/ks-statistic-distr-mar.html" width="800" height="600" frameborder="0"
+></iframe>
+
 The graph below shows the distribution of "gamelength" when "elders" is missing.
 
 **insert histogram2**
+
 The graph below shows the distribution of "gamelength" when "elders" is *not* missing.
 
 Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
@@ -77,10 +81,14 @@ Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
 The p-value was 0.004.
 
 The histogram below displays the empirical distribution of the KS Statistic, along with the obtained p-value.
-**histogram**
+
+<iframe
+    src="assets/ks-statistic-distr-mar.html" width="800" height="600" frameborder="0"
+></iframe>
+
 Using a significance level of 1% (.01), I reject the null hypothesis.
 
-*break*
+---
 
 Missingness of "elders" **does not depend on** "firstblood". I wanted to explore this connection since teams who get the first kill may obtain the elder dragon more often. Conversely, the value for "elders" might be missing for teams who do not get the first kill, and consequently fall behind in the game.
 
@@ -97,7 +105,9 @@ Using the difference of means as my test-statistic, the observed value was **0.0
 The p-value was 0.44.
 
 The histogram below displays the empirical distribution of the difference of means, along with the obtained p-value.
+
 **histogram**
+
 Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 ---
