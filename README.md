@@ -40,18 +40,26 @@ I decided to only analyze matches for teams who played Lee Sin, so that every ro
     src="assets/leesin-win-percentage-lcklpl.html" width="800" height="600" frameborder="0"
 ></iframe>
 
-
 The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in other words, the distribution of the "won" column).
 
+<iframe
+    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="600" frameborder="0"
+></iframe>
 
-**insert pie chart 2**
 The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (in other words, the distribution of the "won" column).
 
 ### Bivariate Analysis
-**insert bar chart 1**
+
+<iframe
+    src="assets/leesin-win-percentage-byleague.html" width="800" height="600" frameborder="0"
+></iframe>
+
 The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK/LPL regions have high win-rates when playing Lee Sin, along with the VCS (Vietnam) and LCS (North America).
 
-**insert bar chart 2**
+<iframe
+    src="assets/leesin-num-games-byleague.html" width="800" height="600" frameborder="0"
+></iframe>
+
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
 ### Interesting Aggregates
 ---
