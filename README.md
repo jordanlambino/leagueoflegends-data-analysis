@@ -141,14 +141,18 @@ The histogram below displays the empirical distribution of the difference of mea
 ***Notes:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. 
 
 ---
+
 ## Baseline Model
 For my baseline model, I included three features: 'side', 'firstblood', and 'firstdragon'. I chose 'side' since the spawn-location of the baron is slightly more favorable for the blue team. I chose 'firstblood' and 'firstdragon' since each are important in allowing a team to gain an early lead, and later on get the baron. All of these three variables are nominal.
 
 Initially, I used a DecisionTreeClassifier and then changed it to a RandomForestClassifier. I began with a max_depth of 25 as my only hyperparameter.
 
 In terms of accuracy, I would say that my baseline model performed poorly. When testing accuracy, my model sat around 60% across trials. This was somewhat expected since I did not include that many features, and used arbitrary hyperparameters.
+
 ---
+
 ## Final Model
+
 For my final model, I added multiple features and fwhich allowed for 
 
 I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my model performance and avoid overfitting. I used GridSearchCV with a grid size of 60 to search for optimal hyperparameters. After searching, I obtained values of 8, 100, and 'gini'.
@@ -156,7 +160,9 @@ I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my
 For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionForestClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionForestClassifier was performing well when predicting the training data. I believe that the RandomForestClassifier is an optimal choice as the randomness of League of Legends can greatly sway one team's chances of getting the first baron.
 
 My improved accuracy for the final model was approximately 72.1%. I believe adding more features played a huge role in this, as information such as "golddiffat15" and "xpdiffat15" are significant indicators regarding the performance of a team during a match. Moreover, variables such as "firstmidtower" typically denote if a team gains early control over the map, which might lead to the first baron as the game goes on.
+
 ---
+
 ## Fairness Analysis
 Group X: LCK Teams
 Group Y: LCS Teams
