@@ -28,21 +28,63 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 - *gameid*: nominal variable; the unique gameid for that game
 
 
-
-
-
-
 ## Data Cleaning and Exploratory Data Analysis
+### Data Cleaning
+I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
+
+**insert dfhead**
+
 ### Univariate Analysis
+**insert pie chart 1**
+The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in other words, the distribution of the "won" column).
+
+**insert pie chart 2**
+The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (in other words, the distribution of the "won" column).
 
 ### Bivariate Analysis
+**insert bar chart 1**
+The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK/LPL regions have high win-rates when playing Lee Sin, along with the VCS (Vietnam) and LCS (North America).
 
+**insert bar chart 2**
+The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
 ### Interesting Aggregates
 
 ## Assignment of Missingness
 ### NMAR Analysis
+**insert analysis**
 
 ### Missingness Dependency
+Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential Missing at Random/Missing Completely at Random data. This was due to the fact that much of the data was Missing by Design, since only certain leagues (namely the LPL) did not include values for "golddiffat15" and "xpdiffat15". 
+
+Instead, I decided to go back to the original, raw dataset and assess the missingness of the variable "elders".
+
+Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with shorter "gamelength".
+
+**insert histogram1**
+The graph below shows the distribution of "gamelength" when "elders" is missing.
+
+**insert histogram2**
+The graph below shows the distribution of "gamelength" when "elders" is *not* missing.
+
+Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
+
+The p-value was 0.004.
+
+The histogram below displays the empirical distribution of the KS Statistic, along with the obtained p-value.
+**histogram**
+Using a significance level of 1% (.01), I reject the null hypothesis.
+
+*break*
+Missingness of "elders" **does not depend on** "firstblood". I wanted to explore this connection since teams who get the first kill may obtain the elder dragon more often. Conversely, the value for "elders" might be missing for teams who do not get the first kill, and consequently fall behind in the game.
+
+**insert histogram3**
+The graph below shows the distribution of "firstblood" when "elders" is missing.
+
+**insert histogram4**
+The graph below shows the distribution of "firstblood" when "elders" is not missing.
+
+Using the difference of means as my test-statistic, the observed value was **
+
 
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
