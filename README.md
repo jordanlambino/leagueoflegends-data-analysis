@@ -15,9 +15,9 @@ To measure the dominance of those two regions, my project aims to analyze the wi
 
 To answer this question, I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility, created a column named "team_kdratio" representing the number of kills divided by the number of deaths, and created a column named "Lee Sin_played". This amounted to a total of 350 rows and 11 columns.
 
-**Description of Columns*
-- ==won==: True if the team won, False otherwise
-- ==Lee Sin_played==: True if any player on that team selected Lee Sin, False otherwise
+**Description of Columnns**
+- *won*: True if the team won, False otherwise
+- *Lee Sin_played*: True if any player on that team selected Lee Sin, False otherwise
 
 
 
