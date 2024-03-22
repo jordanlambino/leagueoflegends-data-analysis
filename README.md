@@ -57,7 +57,7 @@ The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in oth
 <iframe
     src="assets/leesin-win-percentage-lcklpl.html" width="800" height="500" frameborder="0"
 ></iframe>
-The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (in other words, the distribution of the "won" column).
+The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (again, the distribution of the "won" column).
 
 
 ### Bivariate Analysis
@@ -71,7 +71,7 @@ The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK
 <iframe
     src="assets/leesin-num-games-byleague.html" width="800" height="400" frameborder="0"
 ></iframe>
-The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
+The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, yet they still have a higher win-rate than all leagues, aside from the VCS.
 
 
 
@@ -100,7 +100,7 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 I believe that the column 'firsttower' is Not Missing at Random (NMAR).
 
 ### Missingness Dependency
-Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential MAR/MCAR data within the cleaned DataFrame. This was due to the fact that much of the missing data was Missing by Design, since only certain leagues (namely the LPL) did not include values for "golddiffat15" and "xpdiffat15". 
+Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential MAR/MCAR data within the cleaned DataFrame. This was due to the fact that much of the missing data was Missing by Design, since only certain leagues (namely the LPL) did not include any values for "golddiffat15" and "xpdiffat15". 
 
 Consequently, I decided to go back to the original, raw dataset and assess the missingness of the variable "elders".
 
@@ -134,13 +134,14 @@ Missingness of "elders" **does not depend on** "firstblood". I wanted to explore
 
 Using the difference of means as my test-statistic, the observed value was **0.001**.
 
-The p-value was 0.44.
+The p-value was **0.44**.
 
 The histogram below displays the empirical distribution of the difference of means, along with the obtained p-value.
 
 <iframe
     src="assets/diff-means-mcar.html" width="800" height="400" frameborder="0"
-></iframe>Using a significane level of 5% (.05), I fail to reject the null hypothesis.
+></iframe>
+Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 
 
@@ -159,7 +160,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 **Significance-Level:** 5% (0.05)
 
-**p-value:** 0.096, using 100,000 simulations
+**p-value:** **0.096**, using 100,000 simulations
 <iframe
     src="assets/hypothesis-test-empirical.html" width="800" height="400" frameborder="0"
 ></iframe>
@@ -171,15 +172,18 @@ The histogram below displays the empirical distribution of the difference of mea
 
 
 ## **Framing a Prediction Problem**
-**Problem Identification:** Predict whether or not a team will obtain the first baron in the match.
+**Problem Identification:** Predict whether or not a team will obtain the first baron in the match. Obtaining the baron is basically a temporary power boost for a team, and it is one of the most important side objectives in the game.
 
 **Problem Type:** Binary Classification
 - First baron can be True (1) or False (0).
 
 **Response Variable:** "firstbaron"
-- I chose this variable since it is a clear indication of whether or not the team obtained the first baron. **metric**. 
+- I chose this variable since it is a clear indication of whether or not the team obtained the first baron.
 
-***Notes:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. 
+**Metric:** Accuracy
+- I used the accuracy metric to evaluate my model performance. Since I analyzed a classification problem, I thought that accuracy was the most intuitive and interpretable metric for readers.
+
+***Notes on Assumptions:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. As stated later in the Final Model section, I used features such as 'firsttower' and 'firstdragon', which are not restricted to occur before 20 minutes. However, it is extremely rare for professional teams to obtain the first baron before 'firsttower' or 'firstdragon' occur, simply due to the nature of the game.
 
 
 
@@ -200,10 +204,23 @@ In terms of accuracy, I would say that my baseline model performed poorly. When 
 
 ## **Final Model**
 
+When creating my final model, I first searched for other features which might help predict 'firstbaron' more accurately. In particular, I looked for variables which signified team success in the mid-game (10-20 minutes), since these factors could heavily influence who gets the first baron. After testing different features, I decided to include the following: *
+- ***side*** (nominal)
+- ***firstblood*** (nominal)
+- ***golddiffat15*** (quantitative)
+- ***xpdiffat15*** (quantitative)
+- ***firstdragon*** (nominal)
+- ***firsttower*** (nominal)
+- ***firstmidtower*** (nominal)
+- ***turretplates*** (quantitative)
+- ***csdiffat15*** (quantitative)
+- ***xpdiffat10*** (quantitative)
+- ***killsat15*** (quantitative)
+- ***deathsat15*** (quantitative)
 
-I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my model performance and avoid overfitting. I used GridSearchCV with a grid size of 60 to search for optimal hyperparameters. After searching, I obtained values of 8, 100, and 'gini', respectively.
+I fine-tuned the hyperparameters "max_depth", "n_estimators", and "criterion" in order to improve my model performance and avoid overfitting. I used GridSearchCV with a grid size of 60 to search for optimal hyperparameters. After searching, I obtained values of 8, 100, and 'gini', respectively. I saw a slight increase in accuracy (around 1-2 percentage points) after tweaking these hyperparameters.
 
-For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionForestClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionForestClassifier was performing well when predicting the training data. I believe that the RandomForestClassifier is an optimal choice as the randomness of League of Legends can greatly sway one team's chances of getting the first baron.
+For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionTreeClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionTreeClassifier was performing extremely well when predicting the training data, but not the test data. This sign of overfitting influenced me to switch Classifier models. Ultimately, I believe that using the RandomForestClassifier was an optimal choice since the randomness and unpredictability of League of Legends can greatly sway one team's chances of getting the first baron.
 
 My improved accuracy for the final model was approximately 72.1%. I believe adding more features played a huge role in this, as information such as "golddiffat15" and "xpdiffat15" are significant indicators regarding the performance of a team during a match. Moreover, variables such as "firstmidtower" typically denote if a team gains early control over the map, which might lead to the first baron as the game goes on.
 
