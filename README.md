@@ -1,6 +1,7 @@
 # League of Legends Data Analysis 2024
 author: Jordan Lambino
 
+
 ## Introduction
 
 My raw dataset contained statistics taken from over 10,000 professional League of Legends matches in the year 2023. Each unique match includes 12 rows, 10 of which represent the individual players, while the other two represent the teams involved.
@@ -26,7 +27,10 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 - *xpdiffat15*: quantitative column, signifies if one team has gained more experience points through 15 minutes
 - *gameid*: nominal variable; the unique gameid for that game
 
+
+
 ---
+
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
 I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
@@ -50,13 +54,13 @@ The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One region
 ### Bivariate Analysis
 
 <iframe
-    src="assets/leesin-win-percentage-byleague.html" width="800" height="500" frameborder="0"
+    src="assets/leesin-win-percentage-byleague.html" width="800" height="400" frameborder="0"
 ></iframe>
 The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK/LPL regions have high win-rates when playing Lee Sin, along with the VCS (Vietnam) and LCS (North America).
 
 
 <iframe
-    src="assets/leesin-num-games-byleague.html" width="800" height="500" frameborder="0"
+    src="assets/leesin-num-games-byleague.html" width="800" height="400" frameborder="0"
 ></iframe>
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
 
@@ -66,6 +70,8 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 |:------|-------------:|---------------:|-------------:|---------------:|-------------:|
 | False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
 | True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
+
+
 
 ---
 
@@ -81,11 +87,11 @@ Instead, I decided to go back to the original, raw dataset and assess the missin
 Missingness of "elders" **depends on** "gamelength". Since an "elder dragon" requires that either team first obtains four elemental dragons, I hypothesized that "elders" may be missing for matches with shorter "gamelength".
 
 <iframe
-    src="assets/gamelength-distr-eldermissing.html" width="800" height="500" frameborder="0"
+    src="assets/gamelength-distr-eldermissing.html" width="800" height="400" frameborder="0"
 ></iframe>The graph above shows the distribution of "gamelength" when "elders" is missing.
 
 <iframe
-    src="assets/gamelength-distr-eldernotmissing.html" width="800" height="500" frameborder="0"
+    src="assets/gamelength-distr-eldernotmissing.html" width="800" height="400" frameborder="0"
 ></iframe>The graph above shows the distribution of "gamelength" when "elders" is *not* missing.
 
 Using the Kolmogorov-Smirnov (KS) Statistic, the  observed value was **0.0477**.
@@ -95,7 +101,7 @@ The p-value was **0.004**.
 The histogram below displays the empirical distribution of the KS Statistic, along with the obtained p-value.
 
 <iframe
-    src="assets/ks-statistic-distr-mar.html" width="800" height="500" frameborder="0"
+    src="assets/ks-statistic-distr-mar.html" width="800" height="400" frameborder="0"
 ></iframe>Using a significance level of 1% (.01), I reject the null hypothesis.
 
 ---
@@ -109,10 +115,13 @@ The p-value was 0.44.
 The histogram below displays the empirical distribution of the difference of means, along with the obtained p-value.
 
 <iframe
-    src="assets/diff-means-mcar.html" width="800" height="500" frameborder="0"
+    src="assets/diff-means-mcar.html" width="800" height="400" frameborder="0"
 ></iframe>Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
+
+
 ---
+
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
@@ -127,7 +136,7 @@ The histogram below displays the empirical distribution of the difference of mea
 
 **p-value:** 0.096, using 100,000 simulations
 <iframe
-    src="assets/hypothesis-test-empirical.html" width="800" height="500" frameborder="0"
+    src="assets/hypothesis-test-empirical.html" width="800" height="400" frameborder="0"
 ></iframe>
 
 **Conclusion:** Fail to Reject the Null Hypothesis.
@@ -145,6 +154,8 @@ The histogram below displays the empirical distribution of the difference of mea
 
 ***Notes:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. 
 
+
+
 ---
 
 ## Baseline Model
@@ -153,6 +164,8 @@ For my baseline model, I included three features: 'side', 'firstblood', and 'fir
 Initially, I used a DecisionTreeClassifier and then changed it to a RandomForestClassifier. I began with a max_depth of 25 as my only hyperparameter.
 
 In terms of accuracy, I would say that my baseline model performed poorly. When testing accuracy, my model sat around 60% across trials. This was somewhat expected since I did not include that many features, and used arbitrary hyperparameters.
+
+
 
 ---
 
@@ -165,6 +178,8 @@ I fine-tuned "max_depth", "n_estimators", and "criterion" in order to improve my
 For my final model, I used a RandomForestClassifier to predict which team would obtain the first baron. Initially, I had used a DecisionForestClassifier, but after testing the accuracy of both models, it appeared that the RandomForestClassifer was performing better in terms of generalization. Conversely, the DecisionForestClassifier was performing well when predicting the training data. I believe that the RandomForestClassifier is an optimal choice as the randomness of League of Legends can greatly sway one team's chances of getting the first baron.
 
 My improved accuracy for the final model was approximately 72.1%. I believe adding more features played a huge role in this, as information such as "golddiffat15" and "xpdiffat15" are significant indicators regarding the performance of a team during a match. Moreover, variables such as "firstmidtower" typically denote if a team gains early control over the map, which might lead to the first baron as the game goes on.
+
+
 
 ---
 
