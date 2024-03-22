@@ -12,7 +12,6 @@ Since 2011, a World Championship has taken place pitting Tier One teams against 
 
 To measure the dominance of those two regions, my project aims to analyze the win-rate of a certain champion (character), "Lee Sin," who is notorious for being one of the most difficult champions to master due to his versatile, complex abilities. In particular, my project attempts to answer the question: "How does the win-rate of Lee Sin in the LCK/LPL compare to the win-rate of Lee Sin across all Tier One teams?"
 
-To answer this question, I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility and created a column named "team_kdratio" representing the number of kills divided by the number of deaths. Lastly, This amounted to a total of 350 rows and 10 columns.
 
 **Description of Columnns**
 - ***won***: True if the team won, False otherwise
@@ -33,7 +32,9 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 
 ## **Data Cleaning and Exploratory Data Analysis**
 ### Data Cleaning
-I decided to only analyze games for teams who played Lee Sin, so that every row represents a team who played Lee Sin in a given match. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio", as explained above.
+I decided to only analyze games for teams who played Lee Sin, so that every row represents a team who played Lee Sin in a given match. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. 
+
+I queried the dataset to only include Tier One Teams and kept the following columns: "league", "gamelength", "side", "firstblood", "golddiffat15", and "gameid". Additionally, I changed the title of the column "result" to "won", for comprehendibility and created a column named "team_kdratio" representing the number of kills divided by the number of deaths. This amounted to a total of 350 rows and 10 columns.
 
 The first 5 rows of my DataFrame are displayed below:
 
@@ -97,7 +98,7 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 
 ## **Assessment of Missingness**
 ### NMAR Analysis
-I believe that the column 'firsttower' is Not Missing at Random (NMAR).
+Several columns in the dataset are Not Missing at Random (NMAR) as a result of the data generating process. For example, the column "doublekills" depends on the missing value itself, but could potentially depend on the columns "triplekills", "quadrakills", and "pentakills". Moreover, columns such as "firstdragon", "firsttower", and "firstblood" can all be classified as NMAR. For those columns, values seem to be missing simply because those teams didn't fulfill the objective. It could, however, be argued that the missingness of "firstblood" could be dependent on a column named "xpdiffat5". Since the first kill typically happens between 5-10 minutes of gameplay, obtaining additional information about the early game-state may make "firstblood" MAR.
 
 ### Missingness Dependency
 Aside from the missingness of "Lee Sin" in matches, it was difficult for me to find potential MAR/MCAR data within the cleaned DataFrame. This was due to the fact that much of the missing data was Missing by Design, since only certain leagues (namely the LPL) did not include any values for "golddiffat15" and "xpdiffat15". 
@@ -166,7 +167,7 @@ Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 ></iframe>
 
 **Conclusion:** Fail to Reject the Null Hypothesis.
-- There is a lack of evidence demonstrating that the win-rate of Lee Sin in LCK/LPL is substantially greater than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
+- There is a lack of evidence demonstrating that the win percentage of Lee Sin in LCK/LPL is substantially different than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
 
 ---
 
