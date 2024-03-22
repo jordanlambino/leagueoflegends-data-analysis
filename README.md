@@ -96,7 +96,7 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 ---
 
 
-## Assessment of Missingness
+## **Assessment of Missingness**
 ### NMAR Analysis
 I believe that the column 'firsttower' is Not Missing at Random (NMAR).
 
@@ -148,7 +148,7 @@ The histogram below displays the empirical distribution of the difference of mea
 ---
  
 
-## Hypothesis Testing
+## **Hypothesis Testing**
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
 **Null Hypothesis:** The win percentage for the champion "Lee Sin" in the LCK/LPL is less than or equal to the average win percentage of Lee Sin in all professional tier one leagues.
@@ -171,7 +171,7 @@ The histogram below displays the empirical distribution of the difference of mea
 ---
 
 
-## Framing a Prediction Problem
+## **Framing a Prediction Problem**
 **Problem Identification:** Predict whether or not a team will obtain the first baron in the match.
 
 **Problem Type:** Binary Classification
@@ -187,7 +187,7 @@ The histogram below displays the empirical distribution of the difference of mea
 ---
 
 
-## Baseline Model
+## **Baseline Model**
 For my baseline model, I included three features: 'side', 'firstblood', and 'firstdragon'. I chose 'side' since the spawn-location of the baron is slightly more favorable for the blue team. I chose 'firstblood' and 'firstdragon' since each are important in allowing a team to gain an early lead, and later on get the baron. All of these three variables are nominal.
 
 Initially, I used a DecisionTreeClassifier and then changed it to a RandomForestClassifier. I began with a max_depth of 25 as my only hyperparameter.
@@ -199,7 +199,7 @@ In terms of accuracy, I would say that my baseline model performed poorly. When 
 ---
 
 
-## Final Model
+## **Final Model**
 
 For my final model, I added multiple features and fwhich allowed for 
 
@@ -214,7 +214,7 @@ My improved accuracy for the final model was approximately 72.1%. I believe addi
 ---
 
 
-## Fairness Analysis
+## **Fairness Analysis**
 Group X: LCK Teams
 Group Y: LCS Teams
 
