@@ -36,7 +36,15 @@ I decided to only analyze matches for teams who played Lee Sin, so that every ro
 
 ### Univariate Analysis
 **insert pie chart 1**
+
+<iframe
+    src="assets/leesin-win-percentage-lcklpl"
+    width="800"
+    height="600"
+    frameborder="0"
+>
 The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in other words, the distribution of the "won" column).
+
 
 **insert pie chart 2**
 The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (in other words, the distribution of the "won" column).
