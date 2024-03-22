@@ -27,7 +27,7 @@ To answer this question, I queried the dataset to only include Tier One Teams an
 - *golddiffat15*: quantitative column, denoting the differential in gold (resources) at the 15 minute mark. A positive gold differential typically signifies that a team is "winning"
 - *gameid*: nominal variable; the unique gameid for that game
 
-
+---
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
 I decided to only analyze matches for teams who played Lee Sin, so that every row represented a team who played Lee Sin. This ensured that my dataset did not contain two rows for each match. I only kept relevant columns which denoted a team's overall performance for that game. In particular, due to the strength of Lee Sin in the early-mid portions of a given match, I decided to keep "golddiffat15" and calculate the "team_kdratio".
@@ -48,7 +48,7 @@ The bar chart above shows the win rate of Lee Sin by region. As evident, the LCK
 **insert bar chart 2**
 The bar chart above shows the number of games played for Lee Sin by region. This provides new insights to my experiment, as the LCK/LPL regions seem to play Lee Sin significantly more, and still has a positive win rate.
 ### Interesting Aggregates
-
+---
 ## Assignment of Missingness
 ### NMAR Analysis
 **insert analysis**
@@ -94,7 +94,7 @@ The histogram below displays the empirical distribution of the difference of mea
 **histogram**
 Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
-
+---
 ## Hypothesis Testing
 ### Lee Sin Win Rate for LCK/LPL Leagues
 
@@ -112,6 +112,7 @@ Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 **Conclusion:** Fail to Reject the Null Hypothesis.
 - There is a lack of evidence demonstrating that the win-rate of Lee Sin in LCK/LPL is substantially greater than that of all Tier One teams. In other words, the distribution of the "won" column for LCK/LPL teams playing Lee Sin comes from the same distribution of "won" for all games including Lee Sin. However, had the other regions played more games with Lee Sin, it is possible that their win-rate would decrease, and thus affect the overall distribution.
 
+---
 ## Framing a Prediction Problem
 **Problem Identification:** Predict whether or not a team will obtain the first baron in the match.
 
@@ -123,8 +124,9 @@ Using a significane level of 5% (.05), I fail to reject the null hypothesis.
 
 ***Notes:*** Since the first baron appears at 20 minutes, I selected features which are almost certain before the 20 minute mark. 
 
+---
 ## Baseline Model
-
+---
 ## Final Model
-
+---
 ## Fairness Analysis
