@@ -40,11 +40,11 @@ The first 5 rows of my DataFrame are displayed below:
 
 | won   | league   |   patch |   gamelength | side   |   team_kdratio | firstblood   |   golddiffat15 |   xpdiffat15 | gameid                |
 |:------|:---------|--------:|-------------:|:-------|---------------:|:-------------|---------------:|-------------:|:----------------------|
-| True  | LCK      |   13.01 |         2171 | Blue   |        4.25    | True         |           1287 |          538 | ESPORTSTMNT04_2661035 |
-| True  | PCS      |   13.01 |         2139 | Blue   |        2.5     | False        |           1339 |          571 | ESPORTSTMNT03_3098669 |
-| True  | LPL      |   13.01 |         1971 | Blue   |        1.63636 | False        |            nan |          nan | 9718-9718_game_1      |
-| True  | CBLOL    |   13.01 |         1828 | Blue   |        2.2     | True         |           4450 |         1096 | ESPORTSTMNT01_3302316 |
-| True  | LPL      |   13.01 |         1455 | Red    |       12       | True         |            nan |          nan | 9726-9726_game_2      |
+| True  | LCK      |   13.01 |      36.1833 | Blue   |        4.25    | True         |           1287 |          538 | ESPORTSTMNT04_2661035 |
+| True  | PCS      |   13.01 |      35.65   | Blue   |        2.5     | False        |           1339 |          571 | ESPORTSTMNT03_3098669 |
+| True  | LPL      |   13.01 |      32.85   | Blue   |        1.63636 | False        |            nan |          nan | 9718-9718_game_1      |
+| True  | CBLOL    |   13.01 |      30.4667 | Blue   |        2.2     | True         |           4450 |         1096 | ESPORTSTMNT01_3302316 |
+| True  | LPL      |   13.01 |      24.25   | Red    |       12       | True         |            nan |          nan | 9726-9726_game_2      |
 
 
 ### Univariate Analysis
@@ -82,16 +82,16 @@ The bar chart above shows the number of games played for Lee Sin by region. This
 
 | won   |   gamelength |   team_kdratio |   firstblood |   golddiffat15 |   xpdiffat15 |
 |:------|-------------:|---------------:|-------------:|---------------:|-------------:|
-| False |      1900.5  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
-| True  |      1846.19 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
+| False |      31.675  |       0.451633 |     0.388571 |       -1458.06 |     -696.243 |
+| True  |      30.7698 |       3.3006   |     0.622857 |        2062.15 |     1136.02  |
 
 
 - Rather than group matches by result, instead we can look at the mean statistics when grouped by 'firstblood'. We notice that teams who play with Lee Sin often win if they get the first kill. We might also infer that getting the first kill is heavily correlated to team success at the 15 minute mark, as shown in the DataFrame below.
 
 | firstblood   |      won |   gamelength |   team_kdratio |   golddiffat15 |   xpdiffat15 |
 |:-------------|---------:|-------------:|---------------:|---------------:|-------------:|
-| False        | 0.381503 |      1894.52 |        1.19968 |       -875.301 |     -221.801 |
-| True         | 0.615819 |      1852.65 |        2.53727 |       1442.97  |      631.93  |
+| False        | 0.381503 |      31.5753 |        1.19968 |       -875.301 |     -221.801 |
+| True         | 0.615819 |      30.8775 |        2.53727 |       1442.97  |      631.93  |
 
 ---
 
