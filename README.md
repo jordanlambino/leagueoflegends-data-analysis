@@ -38,7 +38,7 @@ I decided to only analyze matches for teams who played Lee Sin, so that every ro
 **insert pie chart 1**
 
 <iframe
-    src="assets/leesin-win-percentage-lcklpl"
+    src="assets/leesin-win-percentage-lcklpl.html"
     width="800"
     height="600"
     frameborder="0"
