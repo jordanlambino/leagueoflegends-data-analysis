@@ -56,7 +56,7 @@ The pie chart above shows the win rate of Lee Sin in the LCK/LPL regions (in oth
 
 
 <iframe
-    src="assets/leesin-win-percentage-lcklpl.html" width="800" height="500" frameborder="0"
+    src="assets/leesin-win-percentage-notlcklpl.html" width="800" height="500" frameborder="0"
 ></iframe>
 The pie chart above shows the win rate of Lee Sin in non-LCK/LPL Tier One regions (again, the distribution of the "won" column).
 
